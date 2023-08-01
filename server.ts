@@ -1,14 +1,15 @@
 import express from 'express';
 import connectToDB from './config/database';
+import AppRouter from './routes';
 
 const app = express();
+const router = new AppRouter(app);
 app.set('port',process.env.PORT || 4200);
 
-connectToDB()
-const port = app.get('port');
-app.get('/', (req,res) => {
-    res.send('Root path enabled');
-})
+router.init();
 
+
+connectToDB();
+const port = app.get('port');
 
 app.listen(port,()=> console.log(`Server is running on port ${port}`));
