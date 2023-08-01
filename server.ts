@@ -1,6 +1,6 @@
 import express from 'express';
-import connectToDB from './config/database';
-import AppRouter from './routes';
+import connectToDB from './src/config/database';
+import AppRouter from './src/routes';
 
 const app = express();
 const router = new AppRouter(app);

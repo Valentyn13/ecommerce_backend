@@ -11,7 +11,7 @@ class AppRouter {
             res.send('API Running');
         });
         this.app.use('/api',testRouter);
-        this.app.use('/api',userRouter)
+        this.app.use('/api/user',userRouter)
     }
 }
 
