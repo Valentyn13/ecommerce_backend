@@ -22,9 +22,8 @@ interface IUserErrors {
 }
 
 export const handleUserErrors = (err: MongooseError.ValidationError) => {
-    console.log (err)
     const errors: IUserErrors = {'email': '', 'password': '', 'name': ''}
-
+    
     if (err.message.includes('User validation failed')) {
         Object.values(err.errors).forEach((error) => {
             errors[error.path] =  error.message

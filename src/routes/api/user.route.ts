@@ -6,7 +6,7 @@ import userController from "../../controllers/user.controller";
 const userRouter: Router = Router();
 
 userRouter.post('/register',
-tryCatch(responseHandler(userController.registerUser.bind(userController))));
+responseHandler(userController.registerUser.bind(userController)));
 
 userRouter.post('/login',
 tryCatch(responseHandler(userController.loginUser.bind(userController))));

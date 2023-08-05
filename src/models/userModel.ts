@@ -17,6 +17,7 @@ const userShema: Schema<IUser> = new Schema({
     name: {
         type: String,
         required: [true, 'Please type a username' ],
+        minlength: [3,'Username must be longer than 3 characters']
     },
     role: {
         type: String,
