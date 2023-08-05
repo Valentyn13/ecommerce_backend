@@ -5,13 +5,13 @@ import userController from "../../controllers/user.controller";
 
 const userRouter: Router = Router();
 
-userRouter.get('/register',
+userRouter.post('/register',
 tryCatch(responseHandler(userController.registerUser.bind(userController))));
 
-userRouter.get('/login',
+userRouter.post('/login',
 tryCatch(responseHandler(userController.loginUser.bind(userController))));
 
-userRouter.get('/profile/:id',
+userRouter.get('/logout',
 tryCatch(responseHandler(userController.getUserProfile.bind(userController))));
 
 export default userRouter;

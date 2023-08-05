@@ -1,20 +1,21 @@
 import UserService from "../services/user.service";
+import { IUserRequest } from "../types/user.types";
 
 export class UserController {
     constructor(private userService: UserService){};
 
-    async registerUser() {
-        const user = this.userService.register();
+    async registerUser(req:IUserRequest ) {
+        const user = await this.userService.register(req.body);
         return user;
     }
 
     async loginUser() {
-        const user = this.userService.login();
+        const user = await this.userService.login();
         return user;
     }
 
     async getUserProfile() {
-        const user = this.userService.getProfile();
+        const user = await this.userService.getProfile();
         return user;
     }
 }
