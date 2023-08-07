@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { tryCatch } from "../../middlewares/tryCatch.middleware";
 import { responseHandler } from "../../middlewares/response.middleware";
 import userController from "../../controllers/user.controller";
+import { userMiddleware } from "../../middlewares/user.middleware";
 
 const userRouter: Router = Router();
 
@@ -9,9 +9,10 @@ userRouter.post('/register',
 responseHandler(userController.registerUser.bind(userController)));
 
 userRouter.post('/login',
-tryCatch(responseHandler(userController.loginUser.bind(userController))));
+userMiddleware.isUserExist,
+responseHandler(userController.loginUser.bind(userController)));
 
 userRouter.get('/logout',
-tryCatch(responseHandler(userController.getUserProfile.bind(userController))));
+responseHandler(userController.getUserProfile.bind(userController)));
 
 export default userRouter;

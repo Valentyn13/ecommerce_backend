@@ -1,4 +1,5 @@
 import isEmail from 'validator'
+import bcrypt from 'bcrypt'
 import { Model, Schema, model } from "mongoose";
 import { IUser } from "../types/user.types";
 
@@ -24,6 +25,19 @@ const userShema: Schema<IUser> = new Schema({
         required: true
     }
 });
+
+
+//fire a function befor doc saved to dboooo
+userShema.pre('save', async function(next) {
+    const salt = await bcrypt.genSalt();
+    this.password = await bcrypt.hash(this.password, salt)
+    next();
+})
+// fire a function after doc saved to db
+userShema.post('save', function(doc, next) {
+    console.log('New user created, ', doc)
+    next()
+})
 
 const User: Model<IUser> = model('User', userShema);
 

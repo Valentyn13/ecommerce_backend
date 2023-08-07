@@ -1,17 +1,23 @@
+export type USER_ERROR_NAMES = 'USER_NOT_FOUND' | 'INCORRECT_PASSWORD'
 export class CustomError extends Error {
-    name = 'Server error';
+    name: USER_ERROR_NAMES;
 
-    status: number = 0;
+    status: number;
 
-    message: string = '';
+    message: string;
 
-    code?: number;
-
-    constructor(message: string,status:number,  code?: number) {
+    constructor({
+        name,
+        message,
+        status,
+    }: {
+        name:USER_ERROR_NAMES,
+        message: string,
+        status: number
+    }) {
         super()
+        this.name = name
         this.message = message;
         this.status = status;
-        this.code = code;
-        Error.captureStackTrace(this, this.constructor)
     }
 }

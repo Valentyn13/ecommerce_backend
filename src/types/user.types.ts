@@ -7,7 +7,7 @@ export interface IUser extends Document {
     email: string;
     password: string;
     name: string;
-    role: UserRole;
+    role?: UserRole;
 }
 
 export interface IUserRequest extends Request {

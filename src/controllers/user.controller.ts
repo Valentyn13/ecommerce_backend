@@ -1,3 +1,4 @@
+
 import UserService from "../services/user.service";
 import { IUserRequest } from "../types/user.types";
 
@@ -9,8 +10,8 @@ export class UserController {
         return user;
     }
 
-    async loginUser() {
-        const user = await this.userService.login();
+    async loginUser(req: IUserRequest) {
+        const user = await this.userService.login(req.body);
         return user;
     }
 
@@ -22,3 +23,4 @@ export class UserController {
 
 const userController = new UserController(new UserService());
 export default userController;
+
