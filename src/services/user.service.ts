@@ -28,7 +28,12 @@ export default class UserService {
     };
   }
 
-  async logOut() {
-    return "User profile";
+  async profile(data:IUser) {
+    console.log(data)
+    return {
+      _id:data._id,
+      email:data.email,
+      name:data.name
+    };
   }
 }

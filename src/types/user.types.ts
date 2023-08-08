@@ -10,6 +10,8 @@ export interface IUser extends Document {
     role?: UserRole;
 }
 
+
+
 export interface IUserRequest extends Request {
     body: IUser;
 }
