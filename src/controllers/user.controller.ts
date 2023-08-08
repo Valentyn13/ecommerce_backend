@@ -2,17 +2,19 @@ import { Response } from "express";
 
 import UserService from "../services/user.service";
 import { IUserRequest } from "../types/user.types";
-
+import { MAX_AGE } from "../helpers/createToken";
 export class UserController {
     constructor(private userService: UserService){};
 
-    async registerUser(req:IUserRequest ) {
+    async registerUser(req:IUserRequest, res: Response ) {
         const user = await this.userService.register(req.body);
+        res.cookie('jwt', user.token, { httpOnly: true, maxAge: MAX_AGE * 1000 });
         return user;
     }
 
-    async loginUser(req: IUserRequest) {
+    async loginUser(req: IUserRequest, res: Response) {
         const user = await this.userService.login(req.body);
+        res.cookie('jwt', user.token, { httpOnly: true, maxAge: MAX_AGE * 1000 });
         return user;
     }
 

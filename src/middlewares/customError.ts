@@ -1,7 +1,8 @@
-export type USER_ERROR_NAMES = 'USER_NOT_FOUND' | 'INCORRECT_PASSWORD'
+export type USER_ERRORS_NAMES = 'USER_NOT_FOUND' | 'INCORRECT_PASSWORD';
+export type AUTH_ERRORS_NAMES = 'NO_TOKEN' | 'INVALID_TOKEN';
 
 export class CustomError extends Error {
-    name: USER_ERROR_NAMES;
+    name: USER_ERRORS_NAMES | AUTH_ERRORS_NAMES;
 
     status: number;
 
@@ -12,7 +13,7 @@ export class CustomError extends Error {
         message,
         status,
     }: {
-        name:USER_ERROR_NAMES,
+        name:USER_ERRORS_NAMES| AUTH_ERRORS_NAMES,
         message: string,
         status: number
     }) {

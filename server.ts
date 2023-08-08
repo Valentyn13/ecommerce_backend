@@ -1,7 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
-import cors from 'cors'
+import cors from 'cors';
+
 import connectToDB from './src/config/database';
 import AppRouter from './src/routes';
 
