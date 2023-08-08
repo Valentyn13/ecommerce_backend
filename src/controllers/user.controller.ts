@@ -1,3 +1,4 @@
+import { Response } from "express";
 
 import UserService from "../services/user.service";
 import { IUserRequest } from "../types/user.types";
@@ -15,9 +16,8 @@ export class UserController {
         return user;
     }
 
-    async getUserProfile() {
-        const user = await this.userService.getProfile();
-        return user;
+    async logOutUser(res: Response) {
+        res.cookie('jwt', '', {maxAge:1})
     }
 }
 

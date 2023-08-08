@@ -1,4 +1,5 @@
 import { Router } from "express";
+
 import { responseHandler } from "../../middlewares/response.middleware";
 import userController from "../../controllers/user.controller";
 import { userMiddleware } from "../../middlewares/user.middleware";
@@ -13,6 +14,6 @@ userMiddleware.isUserExist,
 responseHandler(userController.loginUser.bind(userController)));
 
 userRouter.get('/logout',
-responseHandler(userController.getUserProfile.bind(userController)));
+responseHandler(userController.logOutUser.bind(userController)));
 
 export default userRouter;

@@ -1,9 +1,10 @@
 import { NextFunction, Response } from "express";
-import { userBodyValidate } from "../../helpers/userBodyValidation";
-import { IUserRequest } from "../types/user.types";
 import bcrypt from 'bcrypt'
+
+import { userBodyValidate } from "../helpers/userBodyValidation";
 import User from "../models/userModel";
 import { CustomError } from "./customError";
+import { IUserRequest } from "../types/user.types";
 
 class UserMiddleware {
     async userValidate(req: IUserRequest, res: Response, next: NextFunction) {

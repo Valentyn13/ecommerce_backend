@@ -1,26 +1,27 @@
 import { NextFunction, Request, Response } from "express";
 import { MongoError } from 'mongodb';
 import { Error as MongooseError } from "mongoose";
-import { handleUserErrors } from "./userError";
-import { MAX_AGE } from "../services/user.service";
+
+import { handleUserErrors } from "../helpers/errorHandler";
+import { MAX_AGE } from "../helpers/createToken";
 
 export const responseHandler = (fn: Function) =>
   async (req: Request, res: Response, next: NextFunction): Promise<void | NextFunction> => {
     try {
       const data = await fn(req, res, next);
-      if (data.token) res.cookie('jwt', data.token, { httpOnly: true, maxAge: MAX_AGE * 1000 })
-      res.send(data)
+      if (data.token) res.cookie('jwt', data.token, { httpOnly: true, maxAge: MAX_AGE * 1000 });
+      res.send(data);
     } catch (error) {
       if (error instanceof MongooseError.ValidationError) {
-        const errors = handleUserErrors(error)
-        res.status(400).json({ errors })
+        const errors = handleUserErrors(error);
+        res.status(400).json({ errors });
       }
      else if ((error as MongoError).code === 11000) {
         res.status(400).json({
           email: 'A user with this this unique key already exists!',
         });
       } else {
-        res.status(500).json('Internal server error')
+        res.status(500).json('Internal server error');
       }
     }
-  }
+  };

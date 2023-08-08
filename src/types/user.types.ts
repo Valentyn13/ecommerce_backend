@@ -11,5 +11,5 @@ export interface IUser extends Document {
 }
 
 export interface IUserRequest extends Request {
-    body: IUser
+    body: IUser;
 }

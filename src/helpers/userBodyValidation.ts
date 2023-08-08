@@ -1,5 +1,5 @@
 import joi from "joi";
-import { IUser } from "../src/types/user.types";
+import { IUser } from "../types/user.types";
 
 export const userBodyValidate = (user: IUser) => {
     const userShema = joi.object<IUser>({
@@ -11,3 +11,5 @@ export const userBodyValidate = (user: IUser) => {
 
     return userShema.validate(user)
 }
+
+

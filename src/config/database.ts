@@ -1,4 +1,5 @@
 import { connect } from "mongoose";
+
 const CONNECT_URL = "mongodb+srv://valentyn13git:XpHNJ7qpnOQKFFYL@laptopcluster.gcuouxe.mongodb.net/auth";
 
 const connectToDB = async() => {

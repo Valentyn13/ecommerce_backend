@@ -1,4 +1,5 @@
 export type USER_ERROR_NAMES = 'USER_NOT_FOUND' | 'INCORRECT_PASSWORD'
+
 export class CustomError extends Error {
     name: USER_ERROR_NAMES;
 

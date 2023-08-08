@@ -1,21 +1,4 @@
 import { Error as MongooseError } from "mongoose";
-export class UserError extends Error {
-    name = 'User Error';
-
-    status: number = 0;
-
-    message: string = '';
-
-
-
-    constructor(status: number, message:string) {
-        super()
-        this.status = status;
-        this.message = message
-
-        Error.captureStackTrace(this, this.constructor)
-    }
-}
 
 interface IUserErrors {
     [key: string]: string;
