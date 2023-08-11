@@ -4,12 +4,12 @@ import { IUser } from "../types/user.types";
 
 export default class UserService {
   async register(data: IUser) {
-    const { password, name, email } = data;
+    const { password, name, email, role } = data;
     const user = await User.create({
         email,
         password,
         name,
-        role: 'USER'
+        role
     });
     const token = createToken(user._id);
     return{

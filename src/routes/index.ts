@@ -2,6 +2,7 @@ import { Application } from "express";
 
 import testRouter from "./api/tests.route";
 import userRouter from "./api/user.route";
+import laptopRouter from "./api/laptop.route";
 
 class AppRouter {
     constructor(private app: Application) {};
@@ -11,7 +12,8 @@ class AppRouter {
             res.send('API Running');
         });
         this.app.use('/api',testRouter);
-        this.app.use('/api/user',userRouter)
+        this.app.use('/api/user',userRouter);
+        this.app.use('/api/laptop',laptopRouter)
     }
 }
 
