@@ -20,8 +20,11 @@ interface ILaptopHardDrive {
 }
 
 export interface ILaptop {
+    info?: string
     name: string;
     price: number;
+    producer: string
+    mainImage: string
     screen: ILaptopScreen;
     CPU: ILaptopCPU;
     videoCard:ILaptopVideoCard;

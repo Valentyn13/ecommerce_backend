@@ -5,9 +5,14 @@ interface IUserErrors {
 }
 
 export const handleUserErrors = (err: MongooseError.ValidationError) => {
-    const errors: IUserErrors = {'email': '', 'password': '', 'name': ''}
-    
+    const errors: IUserErrors = {} 
     if (err.message.includes('User validation failed')) {
+        Object.values(err.errors).forEach((error) => {
+            errors[error.path] =  error.message
+        })
+    }
+
+    if (err.message.includes('Laptop validation failed')) {
         Object.values(err.errors).forEach((error) => {
             errors[error.path] =  error.message
         })

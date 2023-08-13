@@ -9,7 +9,8 @@ export default class UserService {
         email,
         password,
         name,
-        role
+        role,
+        info: 'USER'
     });
     const token = createToken(user._id);
     return{

@@ -4,6 +4,10 @@ import { Model, Schema, model } from "mongoose";
 import { IUser } from "../types/user.types";
 
 const userShema: Schema<IUser> = new Schema({
+    info:{
+        type: String,
+        required: true
+    },
     email: {
         type: String,
         required: [true, 'Please enter an email' ],

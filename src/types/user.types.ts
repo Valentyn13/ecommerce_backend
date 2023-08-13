@@ -4,6 +4,7 @@ import { Document } from "mongoose";
 type UserRole = 'USER' | 'ADMIN'
 
 export interface IUser extends Document {
+    info?:string;
     email: string;
     password: string;
     name: string;

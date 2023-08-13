@@ -1,8 +1,12 @@
-import Laptop from "../models/productModel"
+import Laptop from "../models/laptopModel"
 import { ILaptop } from "../types/product.types"
 export default class LaptopService {
   async add(data: ILaptop) {
-    const laptop = await Laptop.create(data)
+    const toCreate = {
+      ...data,
+      info:'LAPTOP'
+    }
+    const laptop = await Laptop.create(toCreate)
     return laptop
   }
 
