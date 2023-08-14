@@ -16,4 +16,10 @@ laptopRouter.post(
 );
 
 
+laptopRouter.get(
+  "/all",
+  responseHandler(laptopController.getLaptops.bind(laptopController))
+);
+
+
 export default laptopRouter;

@@ -12,6 +12,11 @@ export default class LaptopService {
 
   async remove(_id:string) {
     const laptop = await Laptop.findByIdAndDelete(_id)
-    return 'Removed'
+    return laptop;
+  }
+
+  async get() {
+    const laptops = await Laptop.find()
+    return laptops
   }
 }
