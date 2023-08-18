@@ -1,20 +1,18 @@
-import { Application } from "express";
+import { Application } from 'express';
 
-import testRouter from "./api/tests.route";
-import userRouter from "./api/user.route";
-import laptopRouter from "./api/laptop.route";
+import userRouter from './api/user.route';
+import laptopRouter from './api/laptop.route';
 
 class AppRouter {
-    constructor(private app: Application) {};
+  constructor(private app: Application) {}
 
-    init() {
-        this.app.get('/',(_req, res) => {
-            res.send('API Running');
-        });
-        this.app.use('/api',testRouter);
-        this.app.use('/api/user',userRouter);
-        this.app.use('/api/laptop',laptopRouter)
-    }
+  init() {
+    this.app.get('/', (_req, res) => {
+      res.send('API Running');
+    });
+    this.app.use('/api/user', userRouter);
+    this.app.use('/api/laptop', laptopRouter);
+  }
 }
 
 export default AppRouter;
