@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 import Laptop from '../models/laptopModel';
 import { ILaptop } from '../types/product.types';
 

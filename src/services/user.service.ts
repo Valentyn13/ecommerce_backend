@@ -33,7 +33,6 @@ export default class UserService {
   }
 
   async profile(data:IUser) {
-    console.log(data);
     return {
       _id: data._id,
       email: data.email,

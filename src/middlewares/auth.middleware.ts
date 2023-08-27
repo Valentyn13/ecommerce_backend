@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken';
-
 import { NextFunction, Response } from 'express';
 import User from '../models/userModel';
 import { IUserRequest } from '../types/user.types';
