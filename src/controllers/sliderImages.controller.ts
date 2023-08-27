@@ -10,7 +10,7 @@ export class SliderImagesController {
   }
 
   async getImages(req:IGetSliderImagesRequest) {
-    const images = await this.sliderImagesService.get(req.body);
+    const images = await this.sliderImagesService.get(req.query);
     return images;
   }
 }

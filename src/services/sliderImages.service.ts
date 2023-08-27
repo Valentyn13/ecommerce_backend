@@ -1,5 +1,6 @@
+import { ParsedQs } from 'qs';
 import SliderImages from '../models/sliderImagesModel';
-import { IGetSliderImages, ISliderImages } from '../types/sliderImages.types';
+import { ISliderImages } from '../types/sliderImages.types';
 
 export default class SliderImagesService {
   async add(data: ISliderImages) {
@@ -7,7 +8,7 @@ export default class SliderImagesService {
     return sliderImages;
   }
 
-  async get(data:IGetSliderImages) {
+  async get(data: ParsedQs) {
     const { laptopId } = data;
     const sliderImages = await SliderImages.findOne({ laptopId });
     return sliderImages;
