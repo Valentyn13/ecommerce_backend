@@ -18,6 +18,12 @@ const handleUserErrors = (err: MongooseError.ValidationError) => {
     });
   }
 
+  if (err.message.includes('Deal validation failed')) {
+    Object.values(err.errors).forEach((error) => {
+      errors[error.path] = error.message;
+    });
+  }
+
   return errors;
 };
 

@@ -3,6 +3,7 @@ import { Application } from 'express';
 import userRouter from './api/user.route';
 import laptopRouter from './api/laptop.route';
 import sliderImagesRouter from './api/sliderImages.route';
+import dealsRouter from './api/deals.route';
 
 class AppRouter {
   constructor(private app: Application) {}
@@ -14,6 +15,7 @@ class AppRouter {
     this.app.use('/api/user', userRouter);
     this.app.use('/api/laptop', laptopRouter);
     this.app.use('/api/slider', sliderImagesRouter);
+    this.app.use('/api/deals', dealsRouter);
   }
 }
 

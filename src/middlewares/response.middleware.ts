@@ -18,7 +18,8 @@ const responseHandler = (fn: Function) => async (
       res.status(400).json({ errors });
     } else if ((error as MongoError).code === 11000) {
       res.status(400).json({
-        email: 'A user with this this unique key already exists!',
+        error: JSON.stringify(error),
+        // email: 'A user with this this unique key already exists!',
       });
     } else {
       res.status(500).json('Internal server error');

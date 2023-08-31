@@ -1,6 +1,6 @@
 import { Model, Schema, model } from 'mongoose';
 
-import { ILaptop } from '../types/product.types';
+import { ILaptop } from '../types/laptop.types';
 
 const laptopShema: Schema<ILaptop> = new Schema({
   name: {
@@ -74,5 +74,4 @@ const laptopShema: Schema<ILaptop> = new Schema({
 });
 
 const Laptop: Model<ILaptop> = model('Laptop', laptopShema);
-
 export default Laptop;

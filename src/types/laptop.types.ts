@@ -1,3 +1,5 @@
+import { Request } from 'express';
+
 interface ILaptopScreen {
   size: number;
   screenType: 'IPS' | 'OLED' | string;
@@ -32,6 +34,6 @@ export interface ILaptop {
 
 }
 
-export interface ILaptopRequest {
+export interface ILaptopRequest extends Request {
   body: ILaptop
 }

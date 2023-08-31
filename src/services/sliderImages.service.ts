@@ -1,4 +1,5 @@
 import { ParsedQs } from 'qs';
+
 import SliderImages from '../models/sliderImagesModel';
 import { ISliderImages } from '../types/sliderImages.types';
 

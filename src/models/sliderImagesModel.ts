@@ -4,6 +4,7 @@ import { ISliderImages } from '../types/sliderImages.types';
 const sliderImagesShema: Schema<ISliderImages> = new Schema({
   laptopId: {
     type: String,
+    unique: true,
     required: [true, 'UserId is required for correct work'],
   },
   images: {

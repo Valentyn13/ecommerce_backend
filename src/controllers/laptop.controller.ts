@@ -1,6 +1,6 @@
 import { Request } from 'express';
 import LaptopService from '../services/laptop.service';
-import { ILaptopRequest } from '../types/product.types';
+import { ILaptopRequest } from '../types/laptop.types';
 
 export class LaptopController {
   constructor(private laptopService: LaptopService) {}

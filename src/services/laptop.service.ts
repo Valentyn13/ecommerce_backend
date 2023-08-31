@@ -1,5 +1,5 @@
 import Laptop from '../models/laptopModel';
-import { ILaptop } from '../types/product.types';
+import { ILaptop } from '../types/laptop.types';
 
 export default class LaptopService {
   async add(data: ILaptop) {
