@@ -27,8 +27,9 @@ export interface ICustomerFormData {
 
 export interface IDeal {
   customerID: string;
-  customerData: ICustomerFormData
-  products: ICartLaptopList
+  customerData: ICustomerFormData;
+  products: ICartLaptopList;
+  totalPrice: number;
 }
 
 export interface IDelaRequest extends Request {

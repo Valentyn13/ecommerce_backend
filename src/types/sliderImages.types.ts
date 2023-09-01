@@ -1,6 +1,6 @@
 import { Request } from 'express';
 
-export type SliderImagesCortage = [string, string, string];
+export type SliderImagesCortage = [string, string, string, string];
 
 export interface ISliderImages {
   laptopId: string;

@@ -121,6 +121,10 @@ const dealsShema: Schema<IDeal> = new Schema({
     }],
     required: true,
   },
+  totalPrice: {
+    type: Number,
+    required: [true, 'Price of deal is required'],
+  },
 });
 
 const Deals: Model<IDeal> = model('Deal', dealsShema);
