@@ -3,7 +3,7 @@ import { Router } from 'express';
 import responseHandler from '../../middlewares/response.middleware';
 import userController, { UserController } from '../../controllers/user.controller';
 import protect from '../../middlewares/auth.middleware';
-import { isUserExist } from '../../middlewares/user.middleware';
+import isUserExist from '../../middlewares/user.middleware';
 
 const userRouter: Router = Router();
 

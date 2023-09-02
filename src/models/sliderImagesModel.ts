@@ -1,4 +1,5 @@
 import { Model, Schema, model } from 'mongoose';
+
 import { ISliderImages } from '../types/sliderImages.types';
 
 const sliderImagesShema: Schema<ISliderImages> = new Schema({

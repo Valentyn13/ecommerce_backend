@@ -1,6 +1,7 @@
 import isEmail from 'validator';
 import bcrypt from 'bcrypt';
 import { Model, Schema, model } from 'mongoose';
+
 import { IUser } from '../types/user.types';
 
 const userShema: Schema<IUser> = new Schema({
