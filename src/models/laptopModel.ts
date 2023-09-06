@@ -7,10 +7,6 @@ const laptopShema: Schema<ILaptop> = new Schema({
     type: String,
     required: [true, 'Name is required'],
   },
-  info: {
-    type: String,
-    required: true,
-  },
   price: {
     type: Number,
     required: [true, 'Price is required'],
@@ -30,6 +26,7 @@ const laptopShema: Schema<ILaptop> = new Schema({
     },
     screenType: {
       type: String,
+      enum: ['IPS', 'OLED'],
       required: [true, 'Screen type is required'],
     },
     resolution: {
@@ -40,6 +37,7 @@ const laptopShema: Schema<ILaptop> = new Schema({
   CPU: {
     producer: {
       type: String,
+      enum: ['Intel', 'AMD', 'Apple', 'Nvidia'],
       required: [true, 'CPU producer is required'],
     },
     model: {
@@ -54,6 +52,7 @@ const laptopShema: Schema<ILaptop> = new Schema({
   videoCard: {
     producer: {
       type: String,
+      enum: ['Intel', 'AMD', 'Apple', 'Nvidia'],
       required: [true, 'Videocard producer is required'],
     },
     model: {

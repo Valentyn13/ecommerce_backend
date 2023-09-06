@@ -2,17 +2,17 @@ import { Request } from 'express';
 
 interface ILaptopScreen {
   size: number;
-  screenType: 'IPS' | 'OLED' | string;
+  screenType: 'IPS' | 'OLED';
   resolution: string;
 }
 interface ILaptopCPU {
-  producer: 'Intel' | 'AMD' | 'Apple';
+  producer: 'Intel' | 'AMD' | 'Apple' | 'Nvidia';
   model: string;
   cores: number
 
 }
 interface ILaptopVideoCard {
-  producer: 'Intel' | 'AMD';
+  producer: 'Intel' | 'AMD' | 'Apple' | 'Nvidia';
   model: string;
 }
 
@@ -22,7 +22,6 @@ interface ILaptopHardDrive {
 }
 
 export interface ILaptop {
-  info?: string
   name: string;
   price: number;
   producer: string
