@@ -22,7 +22,7 @@ const responseHandler = (fn: Function) => async (
         // email: 'A user with this this unique key already exists!',
       });
     } else {
-      res.status(500).json('Internal server error');
+      res.status(500).json(JSON.stringify(error));
     }
   }
 };

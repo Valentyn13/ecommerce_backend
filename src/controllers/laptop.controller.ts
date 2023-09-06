@@ -16,8 +16,8 @@ export class LaptopController {
     return laptop;
   }
 
-  async getLaptops() {
-    const laptops = await this.laptopService.get();
+  async getLaptops(req: Request) {
+    const laptops = await this.laptopService.get(req.query);
     return laptops;
   }
 }
