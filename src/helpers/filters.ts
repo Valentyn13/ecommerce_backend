@@ -38,22 +38,23 @@ export const laptopQueryGeneraor = (
       });
     }
     if (producer) {
+      const data = producer.split(',');
       requestObject.$and.push({
         producer: {
-          $in: JSON.parse(producer),
+          $in: data,
         },
       });
     }
     if (screenType) {
+      const data = screenType.split(',');
       requestObject.$and.push({
         'screen.screenType': {
-          $in: JSON.parse(screenType),
+          $in: data,
         },
       });
     }
     if (screenSize) {
-      const screen = screenSize;
-      const data = JSON.parse(JSON.stringify(screen));
+      const data = screenSize.split(',');
       requestObject.$and.push({
         'screen.size': {
           $in: data,
@@ -61,24 +62,27 @@ export const laptopQueryGeneraor = (
       });
     }
     if (hardDriveType) {
+      const data = hardDriveType.split(',');
       requestObject.$and.push({
         'hardDrive.hardType': {
-          $in: JSON.parse(hardDriveType),
+          $in: data,
         },
       });
     }
     if (cpuProducer) {
+      const data = cpuProducer.split(',');
       requestObject.$and.push({
         'CPU.producer': {
-          $in: JSON.parse(cpuProducer),
+          $in: data,
         },
       });
     }
 
     if (videoCardProducer) {
+      const data = videoCardProducer.split(',');
       requestObject.$and.push({
         'videoCard.producer': {
-          $in: JSON.parse(videoCardProducer),
+          $in: data,
         },
       });
     }

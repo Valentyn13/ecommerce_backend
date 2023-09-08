@@ -39,7 +39,6 @@ export default class LaptopService {
       cpuProducer,
       videoCardProducer,
     );
-    console.log(JSON.stringify(filterParams));
 
     if (filterParams.$and.length === 0) {
       const laptops = await Laptop.find();
