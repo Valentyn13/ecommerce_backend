@@ -13,6 +13,7 @@ const laptopShema: Schema<ILaptop> = new Schema({
   },
   producer: {
     type: String,
+    enum: ['Lenovo', 'Acer', 'HP', 'Asus', 'Apple', 'Dell'],
     required: [true, 'Producer is required'],
   },
   mainImage: {
@@ -22,6 +23,7 @@ const laptopShema: Schema<ILaptop> = new Schema({
   screen: {
     size: {
       type: String,
+      enum: ['13', '14', '15.6', '16', '17'],
       required: [true, 'Screen size is required'],
     },
     screenType: {

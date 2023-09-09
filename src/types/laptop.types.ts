@@ -1,7 +1,7 @@
 import { Request } from 'express';
 
 interface ILaptopScreen {
-  size: number;
+  size: '13' | '14' | '15.6' | '16' | '17';
   screenType: 'IPS' | 'OLED';
   resolution: string;
 }
@@ -22,7 +22,7 @@ interface ILaptopHardDrive {
 }
 
 export interface ILaptop {
-  name: string;
+  name: 'Lenovo' | 'Acer' | 'HP' | 'Asus' | 'Apple' | 'Dell'
   price: number;
   producer: string
   mainImage: string

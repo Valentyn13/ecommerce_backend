@@ -53,16 +53,13 @@ const dealsShema: Schema<IDeal> = new Schema({
           type: String,
           required: [true, 'Name is required'],
         },
-        info: {
-          type: String,
-          required: true,
-        },
         price: {
           type: Number,
           required: [true, 'Price is required'],
         },
         producer: {
           type: String,
+          enum: ['Lenovo', 'Acer', 'HP', 'Asus', 'Apple', 'Dell'],
           required: [true, 'Producer is required'],
         },
         mainImage: {
@@ -72,6 +69,7 @@ const dealsShema: Schema<IDeal> = new Schema({
         screen: {
           size: {
             type: String,
+            enum: ['13', '14', '15.6', '16', '17'],
             required: [true, 'Screen size is required'],
           },
           screenType: {
