@@ -7,6 +7,7 @@ export interface IQueryObject {
   hardDriveType?: string;
   cpuProducer?:string;
   videoCardProducer?: string;
+  page?: number;
 }
 type KeyType = 'price' | 'producer' | 'screen.screenType' | 'screen.size' | 'CPU.producer' | 'videoCard.producer' | 'hardDrive.hardType';
 type I$and = {

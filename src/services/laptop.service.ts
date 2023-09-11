@@ -2,6 +2,8 @@ import { IQueryObject, laptopQueryGeneraor } from '../helpers/filters';
 import Laptop from '../models/laptopModel';
 import { ILaptop } from '../types/laptop.types';
 
+const LAPTOP_PER_PAGE = 12;
+
 export default class LaptopService {
   async add(data: ILaptop) {
     const toCreate = {
@@ -29,6 +31,8 @@ export default class LaptopService {
       videoCardProducer,
     } = data;
 
+    const page = data.page || 1;
+    const skip = (page - 1) * LAPTOP_PER_PAGE;
     const filterParams = laptopQueryGeneraor(
       priceFrom,
       priceTo,
@@ -41,11 +45,22 @@ export default class LaptopService {
     );
 
     if (filterParams.$and.length === 0) {
-      const laptops = await Laptop.find();
-      return laptops;
+      const count = await Laptop.countDocuments();
+      console.log('no params count: ', count);
+      const laptops = await Laptop.find().limit(LAPTOP_PER_PAGE).skip(skip);
+      const pageCount = Math.ceil(count / LAPTOP_PER_PAGE);
+      return {
+        laptopList: laptops,
+        pageCount,
+      };
     }
-
-    const laptops = await Laptop.find(filterParams);
-    return laptops;
+    const count = await Laptop.countDocuments(filterParams);
+    console.log('params count: ', count);
+    const laptops = await Laptop.find(filterParams).limit(LAPTOP_PER_PAGE).skip(skip);
+    const pageCount = Math.ceil(count / LAPTOP_PER_PAGE);
+    return {
+      laptopList: laptops,
+      pageCount,
+    };
   }
 }
