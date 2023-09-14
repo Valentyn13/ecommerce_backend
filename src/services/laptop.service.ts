@@ -1,3 +1,4 @@
+import { ParsedQs } from 'qs';
 import { IQueryObject, laptopQueryGeneraor } from '../helpers/filters';
 import Laptop from '../models/laptopModel';
 import { ILaptop } from '../types/laptop.types';
@@ -46,7 +47,6 @@ export default class LaptopService {
 
     if (filterParams.$and.length === 0) {
       const count = await Laptop.countDocuments();
-      console.log('no params count: ', count);
       const laptops = await Laptop.find().limit(LAPTOP_PER_PAGE).skip(skip);
       const pageCount = Math.ceil(count / LAPTOP_PER_PAGE);
       return {
@@ -55,12 +55,17 @@ export default class LaptopService {
       };
     }
     const count = await Laptop.countDocuments(filterParams);
-    console.log('params count: ', count);
     const laptops = await Laptop.find(filterParams).limit(LAPTOP_PER_PAGE).skip(skip);
     const pageCount = Math.ceil(count / LAPTOP_PER_PAGE);
     return {
       laptopList: laptops,
       pageCount,
     };
+  }
+
+  async getOne(data: ParsedQs) {
+    const { id } = data;
+    const laptop = await Laptop.findById(id);
+    return laptop;
   }
 }

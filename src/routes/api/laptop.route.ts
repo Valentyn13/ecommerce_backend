@@ -20,4 +20,9 @@ laptopRouter.get(
   responseHandler(laptopController.getLaptops.bind(laptopController)),
 );
 
+laptopRouter.get(
+  '/byId',
+  responseHandler(laptopController.getLaptopById.bind(laptopController)),
+);
+
 export default laptopRouter;

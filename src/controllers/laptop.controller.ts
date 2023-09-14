@@ -20,6 +20,11 @@ export class LaptopController {
     const laptops = await this.laptopService.get(req.query);
     return laptops;
   }
+
+  async getLaptopById(req: Request) {
+    const laptop = await this.laptopService.getOne(req.query);
+    return laptop;
+  }
 }
 
 const laptopController = new LaptopController(new LaptopService());
