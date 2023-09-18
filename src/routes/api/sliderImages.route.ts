@@ -18,4 +18,9 @@ sliderImagesRouter.post(
   responseHandler(sliderImagesController.addImages.bind(sliderImagesController)),
 );
 
+sliderImagesRouter.delete(
+  '/delete/:id',
+  responseHandler(sliderImagesController.deleteImages.bind(sliderImagesController)),
+);
+
 export default sliderImagesRouter;

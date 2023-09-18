@@ -25,6 +25,16 @@ export class LaptopController {
     const laptop = await this.laptopService.getOne(req.query);
     return laptop;
   }
+
+  async deleteLaptop(req: Request) {
+    const laptop = await this.laptopService.delete(req.params.id);
+    return laptop;
+  }
+
+  async updateLaptop(req: Request) {
+    const laptop = await this.laptopService.update(req.params.id, req.body);
+    return laptop;
+  }
 }
 
 const laptopController = new LaptopController(new LaptopService());

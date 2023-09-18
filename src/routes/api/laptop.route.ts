@@ -25,4 +25,13 @@ laptopRouter.get(
   responseHandler(laptopController.getLaptopById.bind(laptopController)),
 );
 
+laptopRouter.delete(
+  '/delete/:id',
+  responseHandler(laptopController.deleteLaptop.bind(laptopController)),
+);
+
+laptopRouter.patch(
+  '/update/:id',
+  responseHandler(laptopController.updateLaptop.bind(laptopController)),
+);
 export default laptopRouter;

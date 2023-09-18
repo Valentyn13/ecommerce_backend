@@ -14,4 +14,9 @@ export default class SliderImagesService {
     const sliderImages = await SliderImages.findOne({ laptopId });
     return sliderImages;
   }
+
+  async delete(id: string) {
+    const sliderImages = await SliderImages.findByIdAndDelete(id);
+    return sliderImages;
+  }
 }

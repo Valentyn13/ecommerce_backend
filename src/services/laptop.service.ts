@@ -68,4 +68,14 @@ export default class LaptopService {
     const laptop = await Laptop.findById(id);
     return laptop;
   }
+
+  async delete(id: string) {
+    const laptop = await Laptop.findByIdAndDelete(id);
+    return laptop;
+  }
+
+  async update(id: string, payload: any) {
+    const laptop = await Laptop.findByIdAndUpdate(id, payload);
+    return laptop;
+  }
 }
