@@ -15,11 +15,6 @@ export default class LaptopService {
     return laptop;
   }
 
-  async remove(_id: string) {
-    const laptop = await Laptop.findByIdAndDelete(_id);
-    return laptop;
-  }
-
   async get(data: IQueryObject) {
     const {
       priceFrom,

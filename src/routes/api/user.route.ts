@@ -23,10 +23,6 @@ userRouter.get(
   responseHandler(UserController.logOutUser.bind(userController)),
 );
 
-userRouter.get('/profile', protect, responseHandler(userController.getProfile.bind(userController)));
-
-userRouter.get('/product', protect, (req, res) => {
-  res.send('List of Products');
-});
+userRouter.get('/profile', protect, isUserExist, responseHandler(userController.getProfile.bind(userController)));
 
 export default userRouter;

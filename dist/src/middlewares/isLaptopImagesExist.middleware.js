@@ -13,49 +13,35 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const customError_1 = require("./customError");
-const laptopModel_1 = __importDefault(require("../models/laptopModel"));
-const isLaptopExist = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const laptopIdFromBody = req.body.laptopId;
+const sliderImagesModel_1 = __importDefault(require("../models/sliderImagesModel"));
+const isLaptopImagesExist = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const laptopIdFromParams = req.params.laptopId;
     const laptopIdFromQueryString = req.query.laptopId;
     try {
-        if (!laptopIdFromQueryString && laptopIdFromBody) {
-            const laptop = yield laptopModel_1.default.find({ _id: laptopIdFromBody });
+        if (laptopIdFromParams) {
+            const laptop = yield sliderImagesModel_1.default.findOne({ laptopId: laptopIdFromParams });
             if (!laptop) {
                 throw new customError_1.CustomError({
                     name: 'NOT_EXIST',
-                    message: `Laptop with _id:${laptopIdFromBody} not found (post query)`,
+                    message: `Slider images of laptop with _id:${laptopIdFromParams} not found`,
                     status: 400,
                 });
             }
         }
-        if (!laptopIdFromBody && laptopIdFromQueryString) {
-            const laptop = yield laptopModel_1.default.find({ _id: laptopIdFromQueryString });
+        if (laptopIdFromQueryString) {
+            const laptop = yield sliderImagesModel_1.default.findOne({ laptopId: laptopIdFromQueryString });
             if (!laptop) {
                 throw new customError_1.CustomError({
                     name: 'NOT_EXIST',
-                    message: `Laptop with _id:${laptopIdFromQueryString} not found (get query)`,
+                    message: `Slider images of laptop with _id:${laptopIdFromQueryString} not found`,
                     status: 400,
                 });
             }
-        }
-        if (!laptopIdFromBody && !laptopIdFromQueryString) {
-            throw new customError_1.CustomError({
-                name: 'NOT_EXIST',
-                message: 'laptopId parametr is not exist in query string',
-                status: 400,
-            });
         }
         next();
     }
-    catch (err) {
-        if (err instanceof customError_1.CustomError) {
-            res.status(err.status).json({
-                error: {
-                    name: err.name,
-                    message: err.message,
-                },
-            });
-        }
+    catch (error) {
+        next(error);
     }
 });
-exports.default = isLaptopExist;
+exports.default = isLaptopImagesExist;

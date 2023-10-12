@@ -27,9 +27,7 @@ const isUserExist = async (req: IUserRequest, res: Response, next: NextFunction)
     }
     next();
   } catch (error) {
-    if (error instanceof CustomError) {
-      res.status(error.status).json({ error: error.message });
-    }
+    next(error);
   }
 };
 

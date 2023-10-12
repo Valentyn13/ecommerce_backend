@@ -11,11 +11,6 @@ export class LaptopController {
     return laptop;
   }
 
-  async removeLaptop(req: Request) {
-    const laptop = await this.laptopService.remove(req.body as string);
-    return laptop;
-  }
-
   async getLaptops(req: Request) {
     const laptops = await this.laptopService.get(req.query);
     return laptops;

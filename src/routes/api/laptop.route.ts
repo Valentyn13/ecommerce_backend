@@ -2,17 +2,13 @@ import { Router } from 'express';
 
 import responseHandler from '../../middlewares/response.middleware';
 import laptopController from '../../controllers/laptop.controller';
+import isLaptopExist from '../../middlewares/isLaptopExist.middleware';
 
 const laptopRouter: Router = Router();
 
 laptopRouter.post(
   '/add',
   responseHandler(laptopController.addLaptop.bind(laptopController)),
-);
-
-laptopRouter.post(
-  '/remove',
-  responseHandler(laptopController.removeLaptop.bind(laptopController)),
 );
 
 laptopRouter.get(
@@ -22,6 +18,7 @@ laptopRouter.get(
 
 laptopRouter.get(
   '/byId',
+  isLaptopExist,
   responseHandler(laptopController.getLaptopById.bind(laptopController)),
 );
 

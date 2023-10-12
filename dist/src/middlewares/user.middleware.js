@@ -37,9 +37,7 @@ const isUserExist = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
         next();
     }
     catch (error) {
-        if (error instanceof customError_1.CustomError) {
-            res.status(error.status).json({ error: error.message });
-        }
+        next(error);
     }
 });
 exports.default = isUserExist;

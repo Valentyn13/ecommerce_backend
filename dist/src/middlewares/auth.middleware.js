@@ -39,14 +39,7 @@ const protect = (req, res, next) => __awaiter(void 0, void 0, void 0, function* 
         next();
     }
     catch (err) {
-        if (err instanceof customError_1.CustomError) {
-            res.status(err.status).json({
-                error: {
-                    name: err.name,
-                    message: err.message,
-                },
-            });
-        }
+        next(err);
     }
 });
 exports.default = protect;

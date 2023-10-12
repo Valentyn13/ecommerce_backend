@@ -34,14 +34,7 @@ const protect = async (req: IUserRequest, res:Response, next:NextFunction) => {
     req.body = authorizedUser;
     next();
   } catch (err) {
-    if (err instanceof CustomError) {
-      res.status(err.status).json({
-        error: {
-          name: err.name,
-          message: err.message,
-        },
-      });
-    }
+    next(err);
   }
 };
 

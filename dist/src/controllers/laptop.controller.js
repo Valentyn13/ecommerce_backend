@@ -24,12 +24,6 @@ class LaptopController {
             return laptop;
         });
     }
-    removeLaptop(req) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const laptop = yield this.laptopService.remove(req.body);
-            return laptop;
-        });
-    }
     getLaptops(req) {
         return __awaiter(this, void 0, void 0, function* () {
             const laptops = yield this.laptopService.get(req.query);

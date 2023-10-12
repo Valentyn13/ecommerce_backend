@@ -23,12 +23,6 @@ class LaptopService {
             return laptop;
         });
     }
-    remove(_id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const laptop = yield laptopModel_1.default.findByIdAndDelete(_id);
-            return laptop;
-        });
-    }
     get(data) {
         return __awaiter(this, void 0, void 0, function* () {
             const { priceFrom, priceTo, producer, screenSize, screenType, hardDriveType, cpuProducer, videoCardProducer, } = data;

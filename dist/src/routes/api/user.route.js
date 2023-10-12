@@ -35,8 +35,5 @@ const userRouter = (0, express_1.Router)();
 userRouter.post('/register', (0, response_middleware_1.default)(user_controller_1.default.registerUser.bind(user_controller_1.default)));
 userRouter.post('/login', user_middleware_1.default, (0, response_middleware_1.default)(user_controller_1.default.loginUser.bind(user_controller_1.default)));
 userRouter.get('/logout', (0, response_middleware_1.default)(user_controller_1.UserController.logOutUser.bind(user_controller_1.default)));
-userRouter.get('/profile', auth_middleware_1.default, (0, response_middleware_1.default)(user_controller_1.default.getProfile.bind(user_controller_1.default)));
-userRouter.get('/product', auth_middleware_1.default, (req, res) => {
-    res.send('List of Products');
-});
+userRouter.get('/profile', auth_middleware_1.default, user_middleware_1.default, (0, response_middleware_1.default)(user_controller_1.default.getProfile.bind(user_controller_1.default)));
 exports.default = userRouter;
